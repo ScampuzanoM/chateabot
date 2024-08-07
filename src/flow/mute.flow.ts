@@ -11,15 +11,15 @@ import { addStringToBlacklist } from '../utils/utils';
             console.log(toMute)
             const check = blacklist.checkIf(toMute);
             if (!check) {
-                blacklist.add(toMute);
-                await  addStringToBlacklist(toMute);
+                // blacklist.add(toMute);
+                // await  addStringToBlacklist(toMute);
                 console.log("muteado")
                 await flowDynamic(`❌ ${toMute} muted`);
               //  await bot.sendMessage(number, message, { media: urlMedia ?? null })
                 return;
             }
             console.log("desmuteado")
-            blacklist.remove(toMute);
+            // blacklist.remove(toMute);
             await flowDynamic(`🆗 ${toMute} unmuted`);
             return;
         }

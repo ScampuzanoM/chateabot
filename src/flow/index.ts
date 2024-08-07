@@ -1,16 +1,14 @@
 
 import { createFlow } from '@builderbot/bot';
-import { mayoristaFlow } from './mayorista.flow';
+import { soporteFlow } from './soporte.flow';
 
-import { welcomeFlow } from "./welcome.flow";
-import {defaulFlow} from "./default.flow"
-import {mediaFlow} from "./media.flow"
+import { welcomeFlow } from "./welcome.flow"
 import {blackListFlow} from './mute.flow'
 import { idleFlow } from '../idle-custom'
-import { detalFlow } from './detal.flow';
-import {voiceNoteFlow} from './voce.flow'
+import { serviciosFlow } from './servicios.flow';
 import * as dotenv from 'dotenv';
-import { personalizadoFlow } from './personalizado.flow';
+import { redireccionarFlow } from './redireccionar.flow';
+
 dotenv.config();
 
-export const flow = createFlow([welcomeFlow, mayoristaFlow, idleFlow,blackListFlow,detalFlow,personalizadoFlow,defaulFlow,mediaFlow,voiceNoteFlow])
+export const flow = createFlow([ redireccionarFlow, soporteFlow, idleFlow,blackListFlow,serviciosFlow,welcomeFlow])

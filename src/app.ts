@@ -22,7 +22,7 @@ export const main = async () => {
 
 
 
-       const adapterProvider = createProvider(Provider, { writeMyself:'host'})
+    const adapterProvider = createProvider(Provider, { writeMyself:'host'})
 
     const adapterDB = new Database()
 

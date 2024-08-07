@@ -4,18 +4,19 @@ import { BaileysProvider as Provider } from '@builderbot/provider-baileys'
 import { reset, stop } from '../idle-custom'
 
 
-export const personalizadoFlow = addKeyword<Provider, Database>(['personalizado'])
+export const redireccionarFlow = addKeyword<Provider, Database>(['mensajeredireccionar'])
     .addAnswer(
         [
-            '¡Seras dirigido con un asesor que te apoyara con tu personalizado! 🌟',
+            '¡Seras dirigido con un asesor que te apoyara con tu ! 🌟',
 
-        ], null, async (ctx, { flowDynamic }) => {
-            stop(ctx);
+        ], null, async (ctx, { flowDynamic , state }) => {
+            // stop(ctx);
 
-            const TEL = process.env.PERSONALIZADO
-
-
-            const mensaje = `Hola, estoy interesado en termos personalizados `;
+            console.log(state.get('tel_asesor'));
+            console.log("entro")
+            const TEL = state.get('tel_asesor');
+            const mensaje = state.get('mensaje_asesor');
+            // const mensaje = `Hola, estoy interesado en termos redireccionars `;
 
             // Codificar el mensaje para usarlo en el enlace de WhatsApp
             const enlaceWhatsApp = encodeURI(`https://wa.me/${TEL}?text=${mensaje}`);
@@ -25,8 +26,8 @@ export const personalizadoFlow = addKeyword<Provider, Database>(['personalizado'
           ${enlaceWhatsApp}`;
 
             // Enviar el mensaje utilizando tu función flowDynamic
+            stop(ctx);
             return await flowDynamic(mensajeFinal);
-
         }
     )
 
